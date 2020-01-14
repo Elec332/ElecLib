@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'nl.elec332.lib'
+version '1.0-Alpha'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
