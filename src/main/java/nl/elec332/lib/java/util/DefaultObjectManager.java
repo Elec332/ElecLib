@@ -1,0 +1,53 @@
+package nl.elec332.lib.java.util;
+
+import java.util.function.Consumer;
+
+/**
+ * Created by Elec332 on 4-9-2019
+ */
+@SuppressWarnings({"WeakerAccess", "unused"})
+public abstract class DefaultObjectManager<O, R> extends AbstractObjectManager<O, R> {
+
+    @Override
+    public abstract void load(R reader);
+
+    @Override
+    public boolean addObjectNice(O object) {
+        boolean ret = objects.add(object);
+        if (ret) {
+            postAddPerson(object);
+            callbacks.runCallbacks();
+        }
+        return ret;
+    }
+
+    protected void postAddPerson(O object) {
+    }
+
+    @Override
+    public void removeObject(O object) {
+        if (!objects.contains(object)) {
+            throw new IllegalArgumentException();
+        }
+        objects.remove(object);
+        postRemoveObject(object);
+        callbacks.runCallbacks();
+    }
+
+    protected void postRemoveObject(O object) {
+    }
+
+    @Override
+    public void updateObject(O object, Consumer<O> consumer) {
+        if (objects.remove(object)) {
+            consumer.accept(object);
+            objects.add(object);
+            postUpdateObject(object);
+            callbacks.runCallbacks();
+        }
+    }
+
+    protected void postUpdateObject(O object) {
+    }
+
+}
