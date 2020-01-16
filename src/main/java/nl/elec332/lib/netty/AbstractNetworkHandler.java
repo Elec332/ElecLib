@@ -18,7 +18,7 @@ public abstract class AbstractNetworkHandler<S extends IDefaultStartable<? exten
 
     @Override
     public void processShutdownPacket(PacketShutDown packet) {
-        System.out.println(" Closing connection with: "+ctx.channel());
+        System.out.println("Closing connection with: "+ctx.channel());
         ctx.isRemoved();
     }
 

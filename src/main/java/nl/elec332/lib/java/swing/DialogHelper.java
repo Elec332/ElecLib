@@ -29,4 +29,24 @@ public class DialogHelper {
         return JOptionPane.showConfirmDialog(parent, data, title, optionType, JOptionPane.PLAIN_MESSAGE);
     }
 
+    public static <T> T askForInput(Component parent, String title, T message) {
+        if (JOptionPane.showOptionDialog(parent, message, title, JOptionPane.PLAIN_MESSAGE, JOptionPane.DEFAULT_OPTION, null, null, null) == JOptionPane.DEFAULT_OPTION) {
+            return null;
+        }
+        return message;
+    }
+
+    public static String askForInput(Component parent, String title) {
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(true);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.requestFocus();
+        textArea.requestFocusInWindow();
+        textArea.addAncestorListener(new RequestFocusListener());
+        if (askForInput(parent, title, scrollPane) == null) {
+            return null;
+        }
+        return textArea.getText();
+    }
+
 }

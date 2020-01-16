@@ -15,6 +15,9 @@ public interface IStartable<N, P extends DefaultChannelInitializer> {
 
     public Function<ChannelHandlerContext, N> getNetworkHandlerFactory();
 
+    default void setNetworkHandler(N networkHandler){
+    }
+
     public AbstractLazyObjectReference<P> getPacketInitializer();
 
     default public void onNettyThreadShutdown(){

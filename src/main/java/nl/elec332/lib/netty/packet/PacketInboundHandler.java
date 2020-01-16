@@ -20,11 +20,11 @@ public class PacketInboundHandler<N> extends SimpleChannelInboundHandler<IPacket
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         networkHandler = startable.getNetworkHandlerFactory().apply(ctx);
+        startable.setNetworkHandler(networkHandler);
         super.channelActive(ctx);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     protected void channelRead0(ChannelHandlerContext ctx, IPacket<N> msg) throws Exception {
         if (canProcess(startable, ctx, msg)) { //Extra filter
             msg.processPacket(networkHandler);

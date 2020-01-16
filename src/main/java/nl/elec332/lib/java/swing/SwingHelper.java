@@ -10,6 +10,10 @@ import java.util.function.Supplier;
  */
 public class SwingHelper {
 
+    public static Window getWindow(Component component) {
+        return SwingUtilities.windowForComponent(component);
+    }
+
     public static void setEnabledAll(Component component, boolean enabled) {
         component.setEnabled(enabled);
         if (component instanceof Container) {
