@@ -2,8 +2,6 @@ package nl.elec332.lib.java.io;
 
 import javax.annotation.Nonnull;
 import java.io.DataOutput;
-import java.io.IOException;
-import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;

@@ -1,8 +1,8 @@
 package nl.elec332.lib.netty.packets;
 
+import io.netty.buffer.ByteBuf;
 import nl.elec332.lib.netty.INetworkHandler;
 import nl.elec332.lib.netty.packet.IPacket;
-import io.netty.buffer.ByteBuf;
 
 import java.io.IOException;
 

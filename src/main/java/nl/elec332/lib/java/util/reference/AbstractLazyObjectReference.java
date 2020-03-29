@@ -8,8 +8,8 @@ import javax.annotation.Nonnull;
 public abstract class AbstractLazyObjectReference<T> extends ObjectReference<T> {
 
     @Nonnull
-    public T get(){
-        if (object == null){
+    public T get() {
+        if (object == null) {
             object = create();
         }
         return super.get();

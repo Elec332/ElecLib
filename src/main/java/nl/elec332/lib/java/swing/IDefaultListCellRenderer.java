@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.function.Function;
 
 /**
  * Created by Elec332 on 29-8-2019
@@ -12,6 +13,19 @@ public interface IDefaultListCellRenderer<T> extends ListCellRenderer<T> {
 
     static <T extends JComponent> ListCellRenderer<T> getDefault() {
         return new IDefaultListCellRenderer<T>() {
+
+        };
+    }
+
+    static <T> ListCellRenderer<T> getCustomName(Function<T, String> namer) {
+        JLabel dummy = new JLabel();
+        return new IDefaultListCellRenderer<T>() {
+
+            @Override
+            public JComponent createComponent(JList<? extends T> list, T value, int index, boolean isSelected, boolean cellHasFocus) {
+                dummy.setText(namer.apply(value));
+                return dummy;
+            }
 
         };
     }

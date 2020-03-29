@@ -7,7 +7,7 @@ import io.netty.buffer.ByteBuf;
  */
 public class ByteBufUtil {
 
-    public static int readVarInt(ByteBuf buf){
+    public static int readVarInt(ByteBuf buf) {
         int i = 0;
         int j = 0;
         while (true) {

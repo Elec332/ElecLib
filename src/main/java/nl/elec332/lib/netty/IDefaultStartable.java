@@ -1,11 +1,11 @@
 package nl.elec332.lib.netty;
 
+import io.netty.channel.SimpleChannelInboundHandler;
 import nl.elec332.lib.java.util.reference.AbstractLazyObjectReference;
 import nl.elec332.lib.netty.packet.DefaultChannelInitializer;
 import nl.elec332.lib.netty.packet.IPacket;
 import nl.elec332.lib.netty.packet.PacketEncoder;
 import nl.elec332.lib.netty.packet.PacketInboundHandler;
-import io.netty.channel.SimpleChannelInboundHandler;
 
 import javax.annotation.Nonnull;
 
@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 public interface IDefaultStartable<N> extends IStartable<N, DefaultChannelInitializer> {
 
     @Override
-    default public AbstractLazyObjectReference<DefaultChannelInitializer> getPacketInitializer(){
+    default public AbstractLazyObjectReference<DefaultChannelInitializer> getPacketInitializer() {
         return new AbstractLazyObjectReference<DefaultChannelInitializer>() {
 
             @Nonnull
@@ -28,12 +28,12 @@ public interface IDefaultStartable<N> extends IStartable<N, DefaultChannelInitia
     }
 
     @SuppressWarnings("unchecked")
-    default public SimpleChannelInboundHandler<?> createInboundHandler(DefaultChannelInitializer packetInitializer){
+    default public SimpleChannelInboundHandler<?> createInboundHandler(DefaultChannelInitializer packetInitializer) {
         return new PacketInboundHandler(this);
     }
 
     @SuppressWarnings("unchecked")
-    default public PacketEncoder createPacketEncoder(DefaultChannelInitializer packetInitializer){
+    default public PacketEncoder createPacketEncoder(DefaultChannelInitializer packetInitializer) {
         return new PacketEncoder(this);
     }
 

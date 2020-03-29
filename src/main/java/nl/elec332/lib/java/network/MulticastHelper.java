@@ -21,7 +21,7 @@ public class MulticastHelper {
                 socket.setSoTimeout(5000);
                 socket.joinGroup(InetAddress.getByName(DEFAULT_MULTICAST_ADDRESS));
                 byte[] kCache = new byte[1024]; //1KB cache
-                while (isOn.getAsBoolean()){
+                while (isOn.getAsBoolean()) {
                     DatagramPacket datagrampacket = new DatagramPacket(kCache, kCache.length);
 
                     try {
@@ -35,7 +35,7 @@ public class MulticastHelper {
                     onReceived.accept(datagrampacket);
 
                 }
-            } catch (Exception e2){
+            } catch (Exception e2) {
                 throw new RuntimeException(e2);
             }
 
@@ -64,7 +64,7 @@ public class MulticastHelper {
                         //
                     }
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }).start();

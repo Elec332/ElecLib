@@ -15,11 +15,11 @@ import java.net.InetSocketAddress;
  */
 public class NettyReceiverThread extends Thread {
 
-    public NettyReceiverThread(String ip, int port, IStartable<?, ?> startable){
+    public NettyReceiverThread(String ip, int port, IStartable<?, ?> startable) {
         this(new InetSocketAddress(ip, port), startable);
     }
 
-    public NettyReceiverThread(InetSocketAddress address, IStartable<?, ?> startable){
+    public NettyReceiverThread(InetSocketAddress address, IStartable<?, ?> startable) {
         this.address = address;
         this.startable = startable;
     }
@@ -47,10 +47,10 @@ public class NettyReceiverThread extends Thread {
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             try { //We cannot allow a crash here, the group must be shut down!
                 startable.onNettyExceptionCaught(e);
-            } catch (Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         } finally {

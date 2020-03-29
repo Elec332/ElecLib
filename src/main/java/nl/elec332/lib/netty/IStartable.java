@@ -1,8 +1,8 @@
 package nl.elec332.lib.netty;
 
+import io.netty.channel.ChannelHandlerContext;
 import nl.elec332.lib.java.util.reference.AbstractLazyObjectReference;
 import nl.elec332.lib.netty.packet.DefaultChannelInitializer;
-import io.netty.channel.ChannelHandlerContext;
 
 import java.util.function.Function;
 
@@ -15,18 +15,18 @@ public interface IStartable<N, P extends DefaultChannelInitializer> {
 
     public Function<ChannelHandlerContext, N> getNetworkHandlerFactory();
 
-    default void setNetworkHandler(N networkHandler){
+    default void setNetworkHandler(N networkHandler) {
     }
 
     public AbstractLazyObjectReference<P> getPacketInitializer();
 
-    default public void onNettyThreadShutdown(){
+    default public void onNettyThreadShutdown() {
     }
 
-    default public void onNettyThreadConnected(){
+    default public void onNettyThreadConnected() {
     }
 
-    default public void onNettyExceptionCaught(Exception e){
+    default public void onNettyExceptionCaught(Exception e) {
         e.printStackTrace();
     }
 

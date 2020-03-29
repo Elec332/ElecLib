@@ -1,10 +1,10 @@
 package nl.elec332.lib.netty.packet;
 
-import nl.elec332.lib.netty.IDefaultStartable;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.EmptyByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import nl.elec332.lib.netty.IDefaultStartable;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class PacketDecoder extends ByteToMessageDecoder {
 
-    public PacketDecoder(IDefaultStartable<?> startable){
+    public PacketDecoder(IDefaultStartable<?> startable) {
         this.startable = startable;
     }
 
@@ -21,8 +21,8 @@ public class PacketDecoder extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if (in instanceof EmptyByteBuf){ //connection probably closed
-            System.out.println("Found empty ByteBuf on connection with: "+ctx.channel().localAddress()+" Closing connection...");
+        if (in instanceof EmptyByteBuf) { //connection probably closed
+            System.out.println("Found empty ByteBuf on connection with: " + ctx.channel().localAddress() + " Closing connection...");
             ctx.close();
             return;
         }

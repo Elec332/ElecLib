@@ -1,15 +1,15 @@
 package nl.elec332.lib.netty.packet;
 
-import nl.elec332.lib.netty.IStartable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import nl.elec332.lib.netty.IStartable;
 
 /**
  * Created by Elec332 on 5-1-2017.
  */
 public class PacketInboundHandler<N> extends SimpleChannelInboundHandler<IPacket<N>> {
 
-    public PacketInboundHandler(IStartable<N, ?> startable){
+    public PacketInboundHandler(IStartable<N, ?> startable) {
         this.startable = startable;
     }
 
@@ -31,7 +31,7 @@ public class PacketInboundHandler<N> extends SimpleChannelInboundHandler<IPacket
         }
     }
 
-    protected boolean canProcess(IStartable<N, ?> startable, ChannelHandlerContext ctx, IPacket<N> packet){
+    protected boolean canProcess(IStartable<N, ?> startable, ChannelHandlerContext ctx, IPacket<N> packet) {
         return true;
     }
 

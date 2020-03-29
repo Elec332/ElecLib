@@ -2,8 +2,6 @@ package nl.elec332.lib.java.io;
 
 import javax.annotation.Nonnull;
 import java.io.DataInput;
-import java.io.IOException;
-import java.io.ObjectInput;
 import java.util.UUID;
 
 /**
