@@ -11,6 +11,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Properties;
@@ -28,8 +29,8 @@ public class ClassProperties {
         }
         T ret;
         try {
-            ret = clazz.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            ret = clazz.getDeclaredConstructor().newInstance();
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
         if (!file.exists()) {
@@ -79,7 +80,7 @@ public class ClassProperties {
         }
     }
 
-    public static Stream<Field> getValidFields(Class clazz) {
+    public static Stream<Field> getValidFields(Class<?> clazz) {
         Field[] fields = clazz.getDeclaredFields();
         return Arrays.stream(fields)
                 .filter(f -> f.getType() == String.class)
@@ -105,8 +106,8 @@ public class ClassProperties {
             if (ret.length == 0) {
                 try {
                     p.dynamicValidValues().getConstructor().setAccessible(true);
-                    ret = p.dynamicValidValues().newInstance().get();
-                } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+                    ret = p.dynamicValidValues().getDeclaredConstructor().newInstance().get();
+                } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }
             }

@@ -1,11 +1,11 @@
 package nl.elec332.lib.java.swing;
 
-import javafx.util.Pair;
-
 import javax.swing.*;
 import java.awt.*;
+import java.util.AbstractMap;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by Elec332 on 14-8-2019
@@ -63,7 +63,7 @@ public class DateChooserPanel extends JPanel {
         return cb.isSelected();
     }
 
-    public static Pair<Date, Boolean> run(Component c, Date date, String text, boolean dayAllowed, boolean timeAllowed) {
+    public static Map.Entry<Date, Boolean> run(Component c, Date date, String text, boolean dayAllowed, boolean timeAllowed) {
         JDialog dialog;
         JOptionPane pane = new JOptionPane(text, JOptionPane.QUESTION_MESSAGE, JOptionPane.DEFAULT_OPTION);
 
@@ -99,7 +99,7 @@ public class DateChooserPanel extends JPanel {
             sel = false;
         }
 
-        return new Pair<>(d, sel);
+        return new AbstractMap.SimpleImmutableEntry<>(d, sel);
     }
 
 }

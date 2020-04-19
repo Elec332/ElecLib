@@ -23,12 +23,12 @@ public class SwingHelper {
         }
     }
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("unchecked")
     public static <C extends AbstractButton> void addListener(C component, Consumer<C> listener) {
         component.addActionListener(e -> listener.accept((C) e.getSource()));
     }
 
-    @SuppressWarnings("all")
+    @SafeVarargs
     public static <C extends JComponent> C addComponent(JComponent parent, C child, Consumer<C>... modifiers) {
         for (Consumer<C> modifier : modifiers) {
             if (modifier != null) {
