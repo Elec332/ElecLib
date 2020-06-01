@@ -6,6 +6,7 @@ module nl.elec332.lib.eleclib {
     exports nl.elec332.lib.java.io;
     exports nl.elec332.lib.java.network;
     exports nl.elec332.lib.java.swing;
+    exports nl.elec332.lib.java.tree;
     exports nl.elec332.lib.java.util;
     exports nl.elec332.lib.java.util.function;
     exports nl.elec332.lib.java.util.image;

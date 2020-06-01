@@ -9,7 +9,7 @@ repositories {
 
 group 'nl.elec332.lib'
 archivesBaseName = "ElecLib"
-version '0.4.1-Alpha'
+version '0.4.1.1-Alpha'
 
 sourceCompatibility = targetCompatibility = 1.11
 
